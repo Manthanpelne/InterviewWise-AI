@@ -1,32 +1,36 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LuActivity, LuFileQuestion, LuPin, LuSave, LuSearch, LuSparkle, LuWifi } from 'react-icons/lu';
 import { Login } from './Auth/Login';
 import { Modal } from '../Modal';
-import { Signup } from './Auth/Signup';
+
+import { UserContext } from '../context/useContext';
+import { ProfileInfoCard } from '../components/Cards/ProfileInfoCard';
+import { Signup } from './Auth/SignUp';
+import { Navbar } from './Home/Navbar';
 
 export const LandingPage = () => {
   const navigate = useNavigate();
   const [openAuthModal, setOpenAuthModal] = useState(false);
   const [currentPage, setCurrentPage] = useState('login');
+  
+  const {user} = useContext(UserContext)
+
+  const handleCTA = ()=>{
+    if(!user){
+      setOpenAuthModal(true)
+    }else{
+      navigate("/dashboard")
+    }
+  }
 
   return (
     <>
-      <div className='w-[90%] mx-auto min-h-full'>
         {/* header */}
-        <header className='flex justify-between items-center py-5 md:py-7'>
-          <a href='' className='font-bold text-lg'>
-            InterviewWise AI
-          </a>
-          <button
-            className='px-5 transition-all duration-100 active:scale-95 shadow-lg cursor-pointer hover:bg-gray-800 rounded-4xl py-2.5 bg-black text-white text-sm'
-            onClick={() => setOpenAuthModal(true)}
-          >
-            Login | Sign Up
-          </button>
-        </header>
+       <Navbar setOpenAuthModal={setOpenAuthModal}/>
 
-        <hr className='opacity-20' />
+        <hr className='opacity-20 w-[95%] m-auto' />
+      <div className='w-[90%] mx-auto min-h-full'>
          {/* hero section */}
      <div className='flex flex-col py-5 md:py-10 md:flex-row gap-6 md:gap-20 justify-between md:items-center'>
           <div className='md:w-1/2 flex flex-col gap-2'>
