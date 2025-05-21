@@ -6,9 +6,9 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import {Toaster} from "react-hot-toast"
 import { LandingPage } from './pages/LandingPage'
 import { Login } from './pages/Auth/Login'
-import { Signup } from './pages/Auth/Signup'
 import { Dashboard } from './pages/Home/Dashboard'
 import { InterviewPrep } from './pages/InterviewPrep/InterviewPrep'
+import { Signup } from './pages/Auth/SignUp'
 
 function App() {
 
@@ -24,7 +24,7 @@ function App() {
                   <Route path='/login' element={<Login/>} />
                   <Route path='/sign-up' element={<Signup/>} />
                   <Route path='/dashboard' element={<Dashboard/>} />
-                  <Route path='/interview-prep/:session-id' element={<InterviewPrep/>} />
+                  <Route path='/interview-prep/:sessionId' element={<InterviewPrep/>} />
                   </Routes>
                 </Router>
 

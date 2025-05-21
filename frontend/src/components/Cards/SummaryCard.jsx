@@ -15,7 +15,7 @@ export const SummaryCard = ({
 }) => {
 
   return (
-    <div onClick={onSelect} className=' text-black bg-white rounded-xl p-3 overflow-hidden cursor-pointer shadow-lg hover:shadow-xl relative group'>
+    <div onClick={onSelect} className=' text-black bg-white rounded-xl transition-all duration-200 active:scale-x-95 p-3 overflow-hidden cursor-pointer shadow-lg shadow-[#ebebeb] hover:shadow-xl relative group'>
         <div className='rounded-xl p-4 cursor-pointer relative' style={{background: colors.bgcolor}} >
             <div className='flex items-start'>
                 <div className='flex flex-shrink-0 w-12 h-12 bg-white rounded-md items-center justify-center mr-4'>

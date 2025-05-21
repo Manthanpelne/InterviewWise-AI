@@ -62,8 +62,9 @@ export const Login = ({ setCurrentPage }) => {
   }
 
   return (
-    <div className='max-w-4xl md:w-[500px] mt-7'>
-      <h3>Welcome Back</h3>
+    <div className='max-w-4xl md:w-[500px] mt-3'>
+       <h1 className='text-center font-bold text-2xl'><span className='textGradient'>InterviewWise</span> AI</h1>
+      <h3 className='mt-3'>Welcome Back</h3>
       <p className='text-[gray]'>Please enter details to login</p>
 
       <form className='mt-5 flex flex-col ' action="" onSubmit={handleLogin}>

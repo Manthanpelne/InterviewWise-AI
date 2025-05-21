@@ -1,24 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { DashboardLayout } from '../../components/Layouts/DashboardLayout'
 import { useNavigate } from 'react-router-dom'
-import { LuPlus } from 'react-icons/lu'
+import { LuLoader, LuPlus } from 'react-icons/lu'
 import axiosInstance from '../../utils/axiosInstance'
 import { API_PATHS } from '../../utils/apiPath'
 import { Card_BG } from '../../utils/data'
 import { SummaryCard } from '../../components/Cards/SummaryCard'
 import moment from "moment"
-
+import { CreateSessionForm } from './CreateSessionForm'
+import { Modal } from '../../Modal'
+import { DeleteAlertContent } from '../../components/DeleteAlertContent'
+import {toast} from "react-hot-toast"
 
 export const Dashboard = () => {
   const navigate = useNavigate()
 
   const [openCreateMode, setOpenCreateMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [sessions, setSessions] = useState([])
 
   const [openDeleteAlert, setOpenDeleteAlert] = useState({
     open:false,
     data: null
 })
+
 
 
 //get all sessions
@@ -34,7 +39,17 @@ const fetchAllSessions = async()=>{
 
 
 const deleteSession = async(sessionData)=>{
-
+  setIsLoading(true)
+try {
+  await axiosInstance.delete(API_PATHS.SESSION.DELETE(sessionData?._id));
+  toast.success("Session deleted successfully")
+  setOpenDeleteAlert({open:false, data:null})
+  fetchAllSessions()
+} catch (error) {
+  console.error("Error deleting session data", error)
+}finally{
+  setIsLoading(false)
+}
 }
 
 
@@ -42,7 +57,7 @@ useEffect(() => {
  fetchAllSessions()
 }, [])
 
- console.log(sessions)
+ //console.log(sessions)
 
   return (
     <DashboardLayout>
@@ -73,6 +88,42 @@ useEffect(() => {
      </button>
 
    </div> 
+
+
+  <Modal
+  isOpen = {openCreateMode}
+  onClose = {()=>{
+    setOpenCreateMode(false)
+  }}
+  hideHeader
+  >
+    <div>
+      <CreateSessionForm />
+    </div>
+  </Modal>
+
+
+
+  {/* delete modal */}
+  {isLoading ? (
+    <LuLoader className='m-auto text-4xl opacity-50 animate-spin'/>
+  ):(
+    <Modal
+  isOpen = {openDeleteAlert?.open}
+  onClose={()=>{
+    setOpenDeleteAlert({open:false, data: null})
+  }}
+  title="Delete Alert"
+  >
+  <div>
+    <DeleteAlertContent content="Are you sure you want to delete this session details?"
+     onDelete = {()=> deleteSession(openDeleteAlert?.data)}
+    />
+  </div>
+  </Modal>
+  )}
+  
+
     </DashboardLayout>
   )
 }
