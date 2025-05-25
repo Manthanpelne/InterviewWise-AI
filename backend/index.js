@@ -15,8 +15,10 @@ const protect = require("./middlewares/authMiddleware")
 app.use(express.json())
 app.use(cors())
 
-const __dirname1 = path.resolve()
-app.use(express.static(path.join(__dirname1, "/frontend/dist")))
+
+
+//deploymentcode
+app.use(express.static(path.resolve(__dirname, 'dist')));
 
 
 
