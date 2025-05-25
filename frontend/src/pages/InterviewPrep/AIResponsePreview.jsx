@@ -11,7 +11,7 @@ export const AIResponsePreview = ({content}) =>{
     
     return (
         <div className="max-w-4xl mx-auto">
-             <div className="text-sm px-4 py-2 prose prose-slate dark:prose-invert max-w-none">
+             <div className="px-4  py-2 prose prose-slate dark:prose-invert max-w-none">
                 <ReactMarkDown
                    remarkPlugins = {[remarkGfm]}
                    components = {{
@@ -26,7 +26,7 @@ export const AIResponsePreview = ({content}) =>{
                          language={language}
                         />
                     ) : (
-                        <code className="px-1 py-0.5 bg-gray-100 text-sm" {...props}>
+                        <code className="px-1 py-0.5 bg-[#e3e7ec] text-sm" {...props}>
                             {children}
                         </code>
                     )
@@ -122,7 +122,7 @@ function CodeBlock({code, language}){
                 <span>{language || "Code"}</span>
             </div>
             <button onClick={copyCode}
-            className="opacity-60" 
+            className="opacity-60 cursor-pointer" 
             area-label="Copy code"
             >
               { copied ? (

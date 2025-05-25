@@ -15,7 +15,16 @@ body{
 
 
 .textGradient {
-  background: linear-gradient(92deg, rgb(73, 190, 228) 0%, rgb(238, 59, 59) 100%);
+  background: linear-gradient(92deg, #4F46E5 0%, #E74041);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.bg{
+  background: #e0cedf;
+background: linear-gradient(90deg, rgba(224, 206, 223, 1) 7%, rgba(210, 232, 190, 1) 27%, rgb(255, 220, 220) 50%, rgba(247, 212, 163, 1) 100%);
+}
+
+.imgShadow{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

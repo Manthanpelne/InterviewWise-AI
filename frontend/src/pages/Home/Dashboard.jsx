@@ -28,9 +28,11 @@ export const Dashboard = () => {
 
 //get all sessions
 const fetchAllSessions = async()=>{
+  setIsLoading(true)
   try {
      const response = await axiosInstance.get(API_PATHS.SESSION.GET_ALL);
      setSessions(response.data)
+     setIsLoading(false)
   } catch (error) {
     console.error("Error fetching all sessions", error)
   }
@@ -54,14 +56,18 @@ try {
 
 
 useEffect(() => {
- fetchAllSessions()
+  {!isLoading && fetchAllSessions() } 
+  
 }, [])
 
  //console.log(sessions)
 
   return (
-    <DashboardLayout>
+    <DashboardLayout className="relative">
       <hr className='opacity-20 w-[95%] m-auto'/>
+
+    {isLoading && <LuLoader className='absolute top-[50%] left-[50%] text-4xl animate-spin opacity-50 flex justify-center items-center' /> }
+
    <div className='container w-[90%] m-auto mt-10'>
      
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7'>
@@ -83,7 +89,7 @@ useEffect(() => {
         })}
     </div>
 
-     <button onClick={()=>setOpenCreateMode(true)} className='flex items-center shadow-lg rounded-sm text-white bg-black px-5 py-2 fixed bottom-20 right-20'>
+     <button onClick={()=>setOpenCreateMode(true)} className='flex items-center gap-1 cursor-pointer shadow-lg rounded-sm text-white bg-[#212020] hover:bg-black transition-all duration-200 active:scale-95 px-5 py-2 fixed bottom-10 right-10 md:right-20'>
       <LuPlus className='text-2xl text-white' /> Add New
      </button>
 
@@ -104,10 +110,7 @@ useEffect(() => {
 
 
 
-  {/* delete modal */}
-  {isLoading ? (
-    <LuLoader className='m-auto text-4xl opacity-50 animate-spin'/>
-  ):(
+  {/* delete session  */}
     <Modal
   isOpen = {openDeleteAlert?.open}
   onClose={()=>{
@@ -121,7 +124,7 @@ useEffect(() => {
     />
   </div>
   </Modal>
-  )}
+  
   
 
     </DashboardLayout>

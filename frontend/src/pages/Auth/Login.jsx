@@ -6,6 +6,7 @@ import { ValidateEmail } from '../../components/utils/validate'
 import axiosInstance from '../../utils/axiosInstance'
 import { API_PATHS } from '../../utils/apiPath'
 import { UserContext } from '../../context/useContext'
+import toast from 'react-hot-toast'
 
 export const Login = ({ setCurrentPage }) => {
   const [email, setEmail] = useState("")
@@ -45,6 +46,7 @@ export const Login = ({ setCurrentPage }) => {
         localStorage.setItem("AIToken", token)
         updateUser(response.data)
         navigate("/dashboard")
+        toast.success("Logged in successfully")
       }
 
     } catch (error) {

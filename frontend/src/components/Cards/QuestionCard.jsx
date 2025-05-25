@@ -32,8 +32,8 @@ export const QuestionCard = ({
       <div  className="bg-white  border group border-gray-100/60 rounded-lg mb-4 overflow-hidden shadow-lg p-5 ">
         <div className="flex flex-col gap-3 lg:gap-0 lg:flex-row items-start justify-between cursor-pointer">
           <div className="flex items-start lg:w-[60%] xl:w-[70%] gap-3">
-            <span className="text-sm font-semibold text-[gray]">Q. {questionNumber}</span>
-            <h3 className="text font-semibold" onClick={toggleExpand}>
+            <span className="text-sm pt-1 flex font-semibold text-[gray]">Q. <span>{questionNumber}</span></span>
+            <h3 className="text-lg font-semibold" onClick={toggleExpand}>
               {question}
             </h3>
           </div>

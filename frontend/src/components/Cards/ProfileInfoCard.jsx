@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { UserContext } from '../../context/useContext'
 import { useNavigate } from 'react-router-dom'
 import { LuUser } from 'react-icons/lu'
+import {toast} from "react-hot-toast"
 
 
 export const ProfileInfoCard = () => {
@@ -17,6 +18,7 @@ export const ProfileInfoCard = () => {
     setTimeout(() => {
       clearUser();
       navigate("/")
+      toast.success("Logged out successfully")
     }, 1000);
   }
 
@@ -33,7 +35,7 @@ export const ProfileInfoCard = () => {
         alt="profile-image"
         className="w-10 h-10 rounded-full object-cover" // Added some basic styling
       />)}
-      <span className="font-semibold text-lg">{user?.name || ""}</span>
+      <span className="font-semibold hidden sm:block text-lg">{user?.name || ""}</span>
        </div>
       <div>
         <button

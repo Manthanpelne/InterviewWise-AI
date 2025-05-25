@@ -9,6 +9,7 @@ import { Login } from './pages/Auth/Login'
 import { Dashboard } from './pages/Home/Dashboard'
 import { InterviewPrep } from './pages/InterviewPrep/InterviewPrep'
 import { Signup } from './pages/Auth/SignUp'
+import { Footer } from './pages/Home/Footer'
 
 function App() {
 
@@ -36,6 +37,8 @@ function App() {
                     }
                   }}
                 />
+
+                <Footer />
             
        </section>
     </>

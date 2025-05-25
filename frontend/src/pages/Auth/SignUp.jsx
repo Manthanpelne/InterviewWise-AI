@@ -8,6 +8,7 @@ import axiosInstance from '../../utils/axiosInstance'
 import { uploadImage } from '../../utils/uploadImage'
 import { ValidateEmail } from '../../components/utils/validate'
 import { API_PATHS } from '../../utils/apiPath'
+import toast from 'react-hot-toast'
 
 export const Signup = ({setCurrentPage}) => {
 const [profilePic, setProfilePic] = useState("")
@@ -58,6 +59,7 @@ try {
     localStorage.setItem("AIToken",token)
     updateUser(response.data)
     navigate("/dashboard")
+    toast.success("Account created successfully")
   }
   
 } catch (error) {

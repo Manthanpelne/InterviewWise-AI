@@ -9,8 +9,8 @@ export const Navbar = ({setOpenAuthModal}) => {
   return (
       
          <header className='w-[90%] m-auto  flex justify-between items-center py-5 md:py-7'>
-                  <a href='/' className='font-bold text-lg'>
-                    InterviewWise AI
+                  <a href='/' className='font-bold text-xl'>
+                    <span className='textGradient'>InterviewWise</span> AI
                   </a>
                  { user? (<ProfileInfoCard/>) :
                   (<button
