@@ -10,9 +10,15 @@ const questionRoutes = require("./routes/questionRoutes")
 const { generateInterviewQuestions, generateConceptExplainations } = require("./controllers/aiController")
 const protect = require("./middlewares/authMiddleware")
 
+
 //middlewares
 app.use(express.json())
 app.use(cors())
+
+const __dirname1 = path.resolve()
+app.use(express.static(path.join(__dirname1, "/frontend/dist")))
+
+
 
 
 //routes
