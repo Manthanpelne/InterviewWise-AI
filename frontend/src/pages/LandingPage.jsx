@@ -275,7 +275,7 @@ export const LandingPage = () => {
                         Unleash your full potential. Generate tailored interview questions, practice effectively, and conquer your next career milestone.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button  class="px-8 cursor-pointer py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#4F46E5] transition duration-300 transform hover:scale-105">
+                        <button onClick={handleCTA} class="px-8 cursor-pointer shadow-lg active:shadow-none py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#BC547C] active:scale-100 transition duration-300 transform hover:scale-105">
                             Get Started Free 
                         </button>
                     </div>
@@ -294,7 +294,7 @@ export const LandingPage = () => {
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-gray-200">
+                    <div class="bg-white p-8 rounded-xl shadow-md flex flex-col items-center text-center border border-gray-200">
                         <p class="text-lg text-gray-700 mb-4 italic">
                             "InterviewWise AI was a game-changer! The questions were eerily accurate, helping me land my dream job at Tech Solutions."
                         </p>
@@ -307,7 +307,7 @@ export const LandingPage = () => {
                         </div>
                         <p class="font-semibold text-[#1F2937]">- Jane Doe, Senior Software Engineer</p>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-gray-200">
+                    <div class="bg-white p-8 rounded-xl shadow-md flex flex-col items-center text-center border border-gray-200">
                        
                         <p class="text-lg text-gray-700 mb-4 italic">
                             "I felt so prepared after using this platform. It covered areas I hadn't even thought of. Highly recommend!"
@@ -321,7 +321,7 @@ export const LandingPage = () => {
                         </div>
                         <p class="font-semibold text-[#1F2937]">- John Smith, Marketing Manager</p>
                     </div>
-                    <div class="bg-white p-8 rounded-xl shadow-lg flex flex-col items-center text-center border border-gray-200">
+                    <div class="bg-white p-8 rounded-xl shadow-md flex flex-col items-center text-center border border-gray-200">
                       
                         <p class="text-lg text-gray-700 mb-4 italic">
                             "Finally, an interview prep tool that truly understands my needs. The tailored questions gave me immense confidence."

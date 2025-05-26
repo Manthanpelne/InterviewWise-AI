@@ -1,7 +1,7 @@
 import React from 'react'
 import { LuX } from 'react-icons/lu'
 
-export const Drawer = ({isOpen, onClose, title, children}) => {
+export const Drawer = React.memo(({isOpen, onClose, title, children}) => {
   return (
     <div tabIndex="-1" area-labelledby="drawer-right-label" className={`fixed top-[100px] sm:top-[132px] right-0 p-8 overflow-y-auto z-40  h-[calc(100vh-64px)] w-full md:w-[40vw] bg-white shadow-lg rounded-lg border-r border-l-gray-800 transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
        
@@ -20,4 +20,4 @@ export const Drawer = ({isOpen, onClose, title, children}) => {
          </div>
     </div>
   )
-}
+})

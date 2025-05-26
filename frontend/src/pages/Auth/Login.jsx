@@ -23,14 +23,12 @@ export const Login = ({ setCurrentPage }) => {
 
     e.preventDefault()
 
-    if (!ValidateEmail(email)) {
-      setError("Please enter valid email address")
+       if (!password || !email) {
+      setError("Please enter all the fields")
       return
     }
-    if (!password) {
-      setError("Please enter the password")
-      return
-    }
+
+ 
     setError("")
     setLoading(true)
 

@@ -6,9 +6,10 @@ import { ProfilePhotoSelector } from '../../components/Inputs/ProfilePhotoSelect
 import { UserContext } from '../../context/useContext'
 import axiosInstance from '../../utils/axiosInstance'
 import { uploadImage } from '../../utils/uploadImage'
-import { ValidateEmail } from '../../components/utils/validate'
+import { ValidateEmail, ValidatePassword } from '../../components/utils/validate'
 import { API_PATHS } from '../../utils/apiPath'
 import toast from 'react-hot-toast'
+
 
 export const Signup = ({setCurrentPage}) => {
 const [profilePic, setProfilePic] = useState("")
@@ -31,10 +32,22 @@ const handleSignUp= async(e) => {
 e.preventDefault()
 
 
-if(!fullName || !ValidateEmail(email) || !password){
+if(!fullName || !email || !password){
   setError("Please enter all the fields")
   return
 }
+
+if(!ValidateEmail(email)){
+  setError("Please enter a valid email")
+  return
+}
+
+if(!ValidatePassword(password)){
+setError("Password must be more than 6 characters and include at least one special character")
+return
+}
+
+
 setError("")
 setLoading(true)
 
@@ -53,7 +66,7 @@ try {
     password,
     profileImageUrl:imgUpload?.imgUrl || ""
   })
-  console.log("response:", response.data)
+  //console.log("response:", response.data)
   const {token} = response.data
   if(token){
     localStorage.setItem("AIToken",token)

@@ -2,8 +2,8 @@ import React from 'react'
 import { LuDelete, LuTrash } from 'react-icons/lu'
 import { getInitials } from '../utils/validate'
 
-export const SummaryCard = ({
- colors,
+export const SummaryCard = React.memo(({
+  colors,
   role,
   experience,
   topicsToFocus,
@@ -13,6 +13,7 @@ export const SummaryCard = ({
   onSelect,
   onDelete
 }) => {
+    
 
   return (
     <div onClick={onSelect} className=' text-black bg-white rounded-xl transition-all duration-200 active:scale-x-95 p-3 overflow-hidden cursor-pointer shadow-lg shadow-[#ebebeb] hover:shadow-xl relative group'>
@@ -62,4 +63,4 @@ export const SummaryCard = ({
                 </div>      
     </div>
   )
-}
+});

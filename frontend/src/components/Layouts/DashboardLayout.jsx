@@ -7,7 +7,7 @@ export const DashboardLayout = ({children}) => {
     const {user} = useContext(UserContext)
 
   return (
-    <div className='min-h-screen'>
+    <div className='md:min-h-screen'>
         <Navbar/>
         
         {user && <div>{children}</div> }

@@ -10,6 +10,7 @@ import { Dashboard } from './pages/Home/Dashboard'
 import { InterviewPrep } from './pages/InterviewPrep/InterviewPrep'
 import { Signup } from './pages/Auth/SignUp'
 import { Footer } from './pages/Home/Footer'
+import { ErrorPage } from './pages/ErrorPage'
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
                 <Router>
                   <Routes>
                   <Route path='/' element={<LandingPage/>} />
-
+                  <Route path='*' element={<ErrorPage/>} />
                   <Route path='/login' element={<Login/>} />
                   <Route path='/sign-up' element={<Signup/>} />
                   <Route path='/dashboard' element={<Dashboard/>} />

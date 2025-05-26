@@ -18,3 +18,9 @@ export const getInitials = (title)=>{
 
   return initials.toUpperCase()
 }
+
+export const ValidatePassword = (password) => {
+  // Password must be more than 6 characters and include at least one special character.
+  const regex = /^(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]).{7,}$/;
+  return regex.test(password);
+}
