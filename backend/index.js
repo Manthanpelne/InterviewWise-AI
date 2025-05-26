@@ -21,6 +21,10 @@ app.use(cors())
 app.use(express.static(path.resolve(__dirname, 'dist')));
 
 
+api.get("/api-endpoint",(req,res)=>{
+    res.send("api is working fine")
+})
+
 
 
 //routes
