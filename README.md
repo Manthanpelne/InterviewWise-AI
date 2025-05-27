@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/522900ec-6bf2-4f72-b39b-7c27e50419d0)# InterviewWise AI 🚀
+# InterviewWise AI 🚀
 
 ## Your Intelligent Interview Preparation Companion
 
@@ -27,7 +27,7 @@ InterviewWise AI is an intuitive, AI-powered platform designed to make your inte
 | **Express.js** | ![Express.js](https://img.icons8.com/fluent/48/000000/express-js.png) |
 | **ReactJS** | ![ReactJS](https://img.icons8.com/color/48/000000/react-native.png) |
 | **Node.js** | ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png) |
-| **Gemini AI API**| ![Google Gemini](https://www.pngall.com/google-gemini-logo-png/download/179041/) |
+| **Gemini AI API**| ![Google Gemini](https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gemini-brand-color.png) |
 | **Tailwind CSS** | ![Tailwind CSS](https://img.icons8.com/?size=96&id=4PiNHtUJVbLs&format=png) |
 | **Framer Motion**| ![Framer Motion](https://images.seeklogo.com/logo-png/44/1/framer-motion-logo-png_seeklogo-446185.png) |
 | **JWT** | ![JSON Web Tokens](https://jwt.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjwt-flower.f20616b0.png&w=1920&q=75) |
