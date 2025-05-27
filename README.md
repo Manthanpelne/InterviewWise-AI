@@ -3,7 +3,7 @@
 ## Your Intelligent Interview Preparation Companion
 
 [![GitHub](https://img.shields.io/badge/GitHub-InterviewWise%20AI-24292e?style=for-the-badge&logo=github)](https://github.com/your-username/interviewwise-ai)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-site-id/deploy-status)](https://your-netlify-site-name.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-site-id/deploy-status)](https://clinquant-taffy-652a93.netlify.app/)
 
 InterviewWise AI is an intuitive, AI-powered platform designed to make your interview preparation seamless and effective. Built on the robust MERN stack, we've focused on delivering an effortless user experience, ensuring you're always ready to ace your next interview.
 
@@ -53,7 +53,7 @@ Follow these simple steps to get InterviewWise AI up and running on your local m
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/interviewwise-ai.git](https://github.com/your-username/interviewwise-ai.git)
+    git clone [https://github.com/Manthanpelne/InterviewWise-AI.git]
     cd interviewwise-ai
     ```
 
@@ -76,4 +76,4 @@ Follow these simple steps to get InterviewWise AI up and running on your local m
 ---
 
 ## 🔗 Live Demos
-* **Netlify Deployment:** [https://your-netlify-site-name.netlify.app](https://your-netlify-site-name.netlify.app) 
+* **Netlify Deployment:** [https://clinquant-taffy-652a93.netlify.app/](https://your-netlify-site-name.netlify.app) 
