@@ -75,8 +75,7 @@ export const CreateSessionForm = () => {
      <div className="w-[90%]">
       <h3 className="text-xl font-semibold">Start a New Interview Journey</h3>
       <p className="text-[#6c6a6a]">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat culpa
-        quo at? Accusamus
+        Craft your perfect answers and build confidence for any interview scenario.
       </p>
       </div>
 

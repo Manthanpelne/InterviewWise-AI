@@ -70,6 +70,7 @@ export const InterviewPrep = () => {
       const response = await axiosInstance.post(
         API_PATHS.QUESTION.PIN(questionId)
       );
+  
       if (response.data && response.data.question) {
         fetchSessionDetailsById();
       }

@@ -14,7 +14,7 @@ export const Navbar = ({setOpenAuthModal}) => {
                   </a>
                  { user? (<ProfileInfoCard/>) :
                   (<button
-                    className='px-5 transition-all duration-100 active:scale-95 shadow-lg cursor-pointer hover:bg-gray-800 rounded-4xl py-2.5 bg-black text-white text-sm'
+                    className='px-5 transition-all duration-100 hover:shadow-[#b1b1fa] hover:scale-105 active:scale-100 shadow-lg cursor-pointer hover:bg-gray-800 rounded py-2 bg-black text-white text-sm'
                     onClick={() => setOpenAuthModal(true)}
                   >
                     Login | Sign Up

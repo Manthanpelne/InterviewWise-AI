@@ -34,15 +34,33 @@ const createSession = async(req,res)=>{
 
 
 //get all sessions for a logged in user
-const getMySessions = async(req,res)=>{
+const getMySessions = async (req, res) => {
     try {
-        const sessions = await Session.find({user:req.user.id}).sort({createdAt: -1}).populate("questions")
-        res.status(200).send(sessions)
-    } catch (error) {
-         res.status(400).send({message:"Server error", error:error.message, success:false})
-    }
-}
+        const page = parseInt(req.query.page) || 1; // Get page number from query, default to 1
+        const limit = 6; // Set the limit of sessions per page
+        const skip = (page - 1) * limit; // Calculate how many documents to skip
 
+        const sessions = await Session.find({ user: req.user.id })
+            .sort({ createdAt: -1 })
+            .skip(skip)
+            .limit(limit)
+            .populate("questions");
+
+        // Get the total number of sessions for the current user to calculate total pages
+        const totalSessions = await Session.countDocuments({ user: req.user.id });
+        const totalPages = Math.ceil(totalSessions / limit);
+
+        res.status(200).send({
+            sessions,
+            currentPage: page,
+            totalPages,
+            totalSessions,
+            hasMore: page < totalPages // Indicate if there are more pages
+        });
+    } catch (error) {
+        res.status(400).send({ message: "Server error", error: error.message, success: false });
+    }
+};
 
 
 

@@ -18,47 +18,23 @@ export const Dashboard = () => {
   const [openCreateMode, setOpenCreateMode] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [sessions, setSessions] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // New state for current page
+  const [totalPages, setTotalPages] = useState(1);   // New state for total pages
+  const [limit] = useState(0); // Number of sessions per page
 
   const [openDeleteAlert, setOpenDeleteAlert] = useState({
     open: false,
     data: null
   });
 
-  // Pagination states
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sessionsPerPage] = useState(6); // Number of sessions to display per page
-
-  // Get current sessions for the page
-  const indexOfLastSession = currentPage * sessionsPerPage;
-  const indexOfFirstSession = indexOfLastSession - sessionsPerPage;
-  const currentSessions = sessions.slice(indexOfFirstSession, indexOfLastSession);
-
-  // Calculate total pages
-  const totalPages = Math.ceil(sessions.length / sessionsPerPage);
-
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // Go to next page
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  // Go to previous page
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  // get all sessions
+  // get all sessions with pagination
   const fetchAllSessions = async () => {
     setIsLoading(true);
     try {
-      const response = await axiosInstance.get(API_PATHS.SESSION.GET_ALL);
-      setSessions(response.data);
+      // Pass page and limit as query parameters
+      const response = await axiosInstance.get(`${API_PATHS.SESSION.GET_ALL}?page=${currentPage}&limit=${limit}`);
+      setSessions(response.data.sessions); 
+      setTotalPages(response.data.totalPages); 
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching all sessions", error);
@@ -74,7 +50,12 @@ export const Dashboard = () => {
       await axiosInstance.delete(API_PATHS.SESSION.DELETE(sessionData?._id));
       toast.success("Session deleted successfully");
       setOpenDeleteAlert({ open: false, data: null });
-      fetchAllSessions(); // Re-fetch sessions after deletion
+      // After deletion, re-fetch sessions, potentially adjusting the current page if needed
+      if (sessions.length === 1 && currentPage > 1) {
+        setCurrentPage(prev => prev - 1); // Go to previous page if last session on current page is deleted
+      } else {
+        fetchAllSessions(); // Re-fetch sessions for the current page
+      }
     } catch (error) {
       console.error("Error deleting session data", error);
       toast.error("Failed to delete session.");
@@ -85,89 +66,86 @@ export const Dashboard = () => {
 
   useEffect(() => {
     fetchAllSessions();
-  }, []);
+  }, [currentPage]); // Re-fetch sessions whenever currentPage changes
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
 
   return (
     <DashboardLayout className="relative">
       <hr className='opacity-20 w-[95%] m-auto' />
 
       {isLoading && (
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <div className='absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-1/2'>
           <LuLoader className='text-4xl animate-spin opacity-50' />
         </div>
       )}
 
       <div className='w-[90%] m-auto mt-10'>
-        {sessions?.length ? (
-          <>
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7'>
-              {currentSessions?.map((data, index) => {
-                // Calculate the correct index for Card_BG based on the global sessions array
-                const globalIndex = sessions.indexOf(data);
-                return (
-                  <SummaryCard
-                    key={data?._id}
-                    colors={Card_BG[globalIndex % Card_BG.length]}
-                    role={data?.role || ""}
-                    experience={data?.experience || "-"}
-                    topicsToFocus={data?.topicsToFocus || ""}
-                    questions={data?.questions?.length || "-"}
-                    description={data?.description || ""}
-                    lastUpdated={
-                      data?.updatedAt ? moment(data.updatedAt).format("Do MMM YYYY") : ""
-                    }
-                    onSelect={() => navigate(`/interview-prep/${data?._id}`)}
-                    onDelete={() => setOpenDeleteAlert({ open: true, data })}
-                  />
-                );
-              })}
-            </div>
+        
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7'>
+          {sessions?.map((data, index) => {
+            // Calculate the correct index for Card_BG based on the global sessions array
+            const globalIndex = sessions.indexOf(data);
+            return (
+              <SummaryCard
+                key={data?._id}
+                colors={Card_BG[globalIndex % Card_BG.length]}
+                role={data?.role || ""}
+                experience={data?.experience || "-"}
+                topicsToFocus={data?.topicsToFocus || ""}
+                questions={data?.questions?.length || "-"}
+                description={data?.description || ""}
+                lastUpdated={
+                  data?.updatedAt ? moment(data.updatedAt).format("Do MMM YYYY") : ""
+                }
+                onSelect={() => navigate(`/interview-prep/${data?._id}`)}
+                onDelete={() => setOpenDeleteAlert({ open: true, data })}
+              />
+            );
+          })}
+        </div>
 
-            {/* Pagination Controls */}
-            {totalPages > 1 && (
-              <div className="flex justify-center items-center mt-10 space-x-2">
-                <button
-                  onClick={prevPage}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 rounded-md cursor-pointer bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Previous
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <button
-                    key={i + 1}
-                    onClick={() => paginate(i + 1)}
-                    className={`px-4 py-2 rounded-md ${
-                      currentPage === i + 1
-                        ? 'bg-[#E74041] cursor-pointer hover:bg-[#c62e2e] text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
-                <button
-                  onClick={nextPage}
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 cursor-pointer rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </>
-        ) : (
-          <>
-            <div className='flex flex-col justify-center items-center pt-10'>
-              <h1 className='text-[gray] text-xl'>"No Sessions. Please create your first Session"</h1>
-              <img className='md:w-1/2' src="/noSessions.svg" alt="No Sessions" />
-            </div>
-          </>
-        )}
+        {sessions.length === 0 && !isLoading &&
+          <div className='flex flex-col justify-center items-center pt-10'>
+            <h1 className='text-[gray] text-xl'>"No Sessions. Please create your first Session"</h1>
+            <img className='md:w-1/2' src="/noSessions.svg" alt="No Sessions" />
+          </div>
+        }
 
+        {/* Pagination Controls */}
+        {!isLoading && sessions?.length && totalPages > 1 ? <>
+          <div className="flex justify-center items-center gap-4 mt-10 mb-20">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className="px-4 py-2 bg-[#212020] text-white rounded-md cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black transition-all duration-200 active:scale-95"
+            >
+              Previous
+            </button>
+            <span className="text-[#393737] font-semibold">Page {currentPage} of {totalPages}</span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="px-4 py-2 bg-[#212020] text-white cursor-pointer rounded-md disabled:opacity-40 disabled:cursor-not-allowed hover:bg-black transition-all duration-200 active:scale-95"
+            >
+              Next
+            </button>
+          </div>
+        </> : null}
+          
         <button
           onClick={() => setOpenCreateMode(true)}
-          className='flex items-center gap-1 cursor-pointer shadow-lg rounded-sm text-white bg-[#212020] hover:bg-black transition-all duration-200 active:scale-95 px-5 py-2 fixed bottom-10 right-10 md:right-20'
+          className='flex items-center gap-1 cursor-pointer shadow-lg rounded-sm text-white bg-[#212020] hover:bg-black transition-all duration-100 hover:shadow-[#b1b1fa] hover:scale-105 active:scale-100 px-5 py-2 fixed bottom-10 right-10 md:right-20'
         >
           <LuPlus className='text-2xl text-white' /> Add New
         </button>
@@ -185,6 +163,7 @@ export const Dashboard = () => {
           <CreateSessionForm
             onSessionCreated={() => {
               setOpenCreateMode(false);
+              setCurrentPage(1); // Reset to first page after creating a new session
               fetchAllSessions();
             }}
           />

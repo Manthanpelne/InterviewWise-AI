@@ -105,7 +105,7 @@ export const LandingPage = () => {
             <a
               href=""
               onClick={handleCTA}
-              className="bg-black shadow-lg w-40 text-center px-6 rounded-4xl border text-white py-2 "
+              className="bg-black hover:shadow-[#b1b1fa] transition-all duration-200 hover:scale-105 active:scale-100 shadow-lg w-40 text-center px-6 rounded-4xl border text-white py-2 "
             >
               Get Started
             </a>
@@ -113,7 +113,7 @@ export const LandingPage = () => {
         </div>
 
         <img
-          className=" imgShadow m-auto mt-10 py-5 md:py-10"
+          className=" imgShadow m-auto mt-10 py-5 md:py-10 bg-white"
           src="/heroImg.png"
           alt=""
         />
