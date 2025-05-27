@@ -52,8 +52,7 @@ Follow these simple steps to get InterviewWise AI up and running on your local m
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/Manthanpelne/InterviewWise-AI.git]
-    cd interviewwise-ai
+    git clone https://github.com/Manthanpelne/InterviewWise-AI.git
     ```
 
 2.  **Install frontend dependencies and run the frontend:**
