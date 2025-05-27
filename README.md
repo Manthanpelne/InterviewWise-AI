@@ -1,9 +1,8 @@
-# InterviewWise AI 🚀
+![image](https://github.com/user-attachments/assets/522900ec-6bf2-4f72-b39b-7c27e50419d0)# InterviewWise AI 🚀
 
 ## Your Intelligent Interview Preparation Companion
 
-[![GitHub](https://img.shields.io/badge/GitHub-InterviewWise%20AI-24292e?style=for-the-badge&logo=github)](https://github.com/your-username/interviewwise-ai)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-site-id/deploy-status)](https://clinquant-taffy-652a93.netlify.app/)
+## 🔗 Live Demo  [https://clinquant-taffy-652a93.netlify.app/](https://your-netlify-site-name.netlify.app) 
 
 InterviewWise AI is an intuitive, AI-powered platform designed to make your interview preparation seamless and effective. Built on the robust MERN stack, we've focused on delivering an effortless user experience, ensuring you're always ready to ace your next interview.
 
@@ -28,10 +27,10 @@ InterviewWise AI is an intuitive, AI-powered platform designed to make your inte
 | **Express.js** | ![Express.js](https://img.icons8.com/fluent/48/000000/express-js.png) |
 | **ReactJS** | ![ReactJS](https://img.icons8.com/color/48/000000/react-native.png) |
 | **Node.js** | ![Node.js](https://img.icons8.com/color/48/000000/nodejs.png) |
-| **Gemini AI API**| ![Google Gemini](https://img.icons8.com/color/48/000000/google-gemini.png) |
-| **Tailwind CSS** | ![Tailwind CSS](https://img.icons8.com/color/48/000000/tailwind-css.png) |
-| **Framer Motion**| ![Framer Motion](https://www.framer.com/images/framer-logo.svg) |
-| **JWT** | ![JSON Web Tokens](https://img.icons8.com/ios-filled/48/000000/json-web-token.png) |
+| **Gemini AI API**| ![Google Gemini](https://www.pngall.com/google-gemini-logo-png/download/179041/) |
+| **Tailwind CSS** | ![Tailwind CSS](https://img.icons8.com/?size=96&id=4PiNHtUJVbLs&format=png) |
+| **Framer Motion**| ![Framer Motion](https://images.seeklogo.com/logo-png/44/1/framer-motion-logo-png_seeklogo-446185.png) |
+| **JWT** | ![JSON Web Tokens](https://jwt.io/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fjwt-flower.f20616b0.png&w=1920&q=75) |
 
 ---
 
@@ -75,5 +74,4 @@ Follow these simple steps to get InterviewWise AI up and running on your local m
 
 ---
 
-## 🔗 Live Demos
-* **Netlify Deployment:** [https://clinquant-taffy-652a93.netlify.app/](https://your-netlify-site-name.netlify.app) 
+
