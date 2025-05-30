@@ -2,7 +2,7 @@
 
 ## Your Intelligent Interview Preparation Companion
 
-## 🔗 Live Demo  [https://clinquant-taffy-652a93.netlify.app/](https://your-netlify-site-name.netlify.app) 
+## 🔗 Live Demo  [https://clinquant-taffy-652a93.netlify.app/] 
 
 InterviewWise AI is an intuitive, AI-powered platform designed to make your interview preparation seamless and effective. Built on the robust MERN stack, we've focused on delivering an effortless user experience, ensuring you're always ready to ace your next interview.
 
